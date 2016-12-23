@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">BlogReader</string>
-    <string name="Fragment_1">Fragment_1</string>
+    <string name="fragment_1">Fragment_1</string>
     <string name="Fragment_2">Fragment_2</string>
     <string name="Fragment_3">Fragment_3</string>
     <string name="Fragment_4">Fragment_4</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="settings">Settings</string>
 </resources>

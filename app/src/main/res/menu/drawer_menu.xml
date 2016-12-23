@@ -2,25 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="Fragment_1"
+            android:id="@+id/fragment1"
             android:icon="@drawable/ic_filter_1_black_24dp"
-            android:title="@string/Fragment_1"
+            android:title="@string/fragment_1"
         />
         <item
-            android:id="Fragment_2"
+            android:id="@+id/fragment2"
             android:icon="@drawable/ic_filter_2_black_24dp"
             android:title="@string/Fragment_2"
             />
         <item
-            android:id="Fragment_3"
+            android:id="@+id/fragment3"
             android:icon="@drawable/ic_filter_3_black_24dp"
             android:title="@string/Fragment_3"
             />
         <item
-            android:id="Fragment_4"
+            android:id="@+id/fragment4"
             android:icon="@drawable/ic_filter_4_black_24dp"
             android:title="@string/Fragment_4"
             />
     </group>
-
 </menu>
