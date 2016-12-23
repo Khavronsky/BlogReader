@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BlogReader</string>
+    <string name="Fragment_1">Fragment_1</string>
+    <string name="Fragment_2">Fragment_2</string>
+    <string name="Fragment_3">Fragment_3</string>
+    <string name="Fragment_4">Fragment_4</string>
+</resources>
