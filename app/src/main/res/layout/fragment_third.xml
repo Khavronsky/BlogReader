@@ -6,18 +6,19 @@
     tools:context=".FirstFragment">
 
     <ImageButton
-        android:id="@+id/first_button"
+        android:id="@+id/third_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:onClick="startSecondFragment"
-        app:srcCompat="@drawable/ic_filter_2_black_24dp" />
+        android:onClick="startFourthFragment"
+        app:srcCompat="@drawable/ic_filter_4_black_24dp" />
+
     <TextView
-        android:id="@+id/tvFragment1"
+        android:id="@+id/tvFragment3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/Fragment_1"
+        android:text="@string/Fragment_3"
         android:textSize="32sp" />
 
 </FrameLayout>
