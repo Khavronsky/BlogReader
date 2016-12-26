@@ -11,7 +11,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:onClick="startFirstFragment"
+        android:onClick="onFragmentButtonSelected"
         app:srcCompat="@drawable/ic_filter_1_black_24dp" />
 
     <TextView

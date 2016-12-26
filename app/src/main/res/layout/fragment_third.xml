@@ -10,7 +10,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:onClick="startFourthFragment"
+        android:onClick="onFragmentButtonSelected"
         app:srcCompat="@drawable/ic_filter_4_black_24dp" />
 
     <TextView
