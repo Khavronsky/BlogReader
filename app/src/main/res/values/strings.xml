@@ -11,4 +11,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="settings">Settings</string>
+    <string name="don_t_push_red_button">DON\'T PUSH RED BUTTON</string>
+    <string name="pusher">Жмякер</string>
+    <string name="push">ЖМЯК-ЖМЯК</string>
 </resources>

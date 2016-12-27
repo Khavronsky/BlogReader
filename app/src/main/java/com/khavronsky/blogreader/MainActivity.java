@@ -1,7 +1,10 @@
 package com.khavronsky.blogreader;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,9 +13,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
@@ -114,14 +119,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+    protected Dialog onCreateDialog(int id) {
+            AlertDialog.Builder adb = new AlertDialog.Builder(this);
+
+            adb.setTitle("RED BO-O-OM BUTTON");
+
+            adb.setMessage("Oh, no!!!\n You pressed fucking red button!!!");
+
+            adb.setIcon(android.R.drawable.ic_dialog_info);
+
+            adb.setPositiveButton("Everybody must die", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            adb.setNegativeButton("I'm so sorry", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "NO! Everybody must die", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                    finish();
+                }
+            });
+            return adb.create();
+
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case (R.id.red_button):
+                showDialog(0);
+                break;
+            case (R.id.pusher):
+                Toast toast = Toast.makeText(this,
+                        R.string.push, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                break;
+            case (R.id.settings):
+
+                break;
+            case (R.id.settings_too):
+
+                break;
+            default:
+                break;
         }
 
         return super.onOptionsItemSelected(item);
