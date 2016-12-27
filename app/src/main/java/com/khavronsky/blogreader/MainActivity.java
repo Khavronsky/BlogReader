@@ -52,16 +52,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.fragment1) {
-            startFirstFragment();
+//            startFirstFragment();
+            startFragment(firstFragment);
 
         } else if (id == R.id.fragment2) {
-            startSecondFragment();
+//            startSecondFragment();
+            startFragment(secondFragment);
 
         } else if (id == R.id.fragment3) {
-            startThirdFragment();
+//            startThirdFragment();
+            startFragment(thirdFragment);
 
         } else if (id == R.id.fragment4) {
-            startFourthFragment();
+//            startFourthFragment();
+            startFragment(fourthFragment);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -74,49 +78,67 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = v.getId();
         switch (id) {
             case (R.id.first_button):
-                startSecondFragment();
+                startFragment(secondFragment);
+//                startSecondFragment();
                 break;
             case (R.id.second_button):
-                startThirdFragment();
+                startFragment(thirdFragment);
+//                startThirdFragment();
                 break;
             case (R.id.third_button):
-                startFourthFragment();
+                startFragment(fourthFragment);
+//                startFourthFragment();
                 break;
             case (R.id.fourth_button):
-                startFirstFragment();
+//                startFirstFragment();
+                startFragment(firstFragment);
                 break;
             default:
                 break;
         }
     }
 
-    public void startFirstFragment() {
+    public void startFragment(Fragment fragment) {
         fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container, firstFragment);
+//        getFragmentManager().getBackStackEntryAt(0);
+//        if(getBackStackEntryCount()>0)
+//            getBackStackEntryAt( getBackStackEntryCount() -1)
+//        getFragmentManager().findFragmentById(0);
+//        getFragmentManager().
+//        if (fragmentTransaction.isEmpty()) {
+//            fragmentTransaction.add(R.id.container, fragment);
+//        }
+        fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.commit();
-
     }
 
-    public void startSecondFragment() {
-        fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container, secondFragment);
-        fragmentTransaction.commit();
-
-    }
-
-    public void startThirdFragment() {
-        fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container, thirdFragment);
-        fragmentTransaction.commit();
-
-    }
-
-    public void startFourthFragment() {
-        fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container, fourthFragment);
-        fragmentTransaction.commit();
-
-    }
+//    public void startFirstFragment() {
+//        fragmentTransaction = getFragmentManager().beginTransaction();
+//        fragmentTransaction.add(R.id.container, firstFragment);
+//        fragmentTransaction.commit();
+//
+//    }
+//
+//    public void startSecondFragment() {
+//        fragmentTransaction = getFragmentManager().beginTransaction();
+//        fragmentTransaction.add(R.id.container, secondFragment);
+//        fragmentTransaction.commit();
+//
+//    }
+//
+//    public void startThirdFragment() {
+//        fragmentTransaction = getFragmentManager().beginTransaction();
+//        fragmentTransaction.add(R.id.container, thirdFragment);
+//        fragmentTransaction.commit();
+//
+//    }
+//
+//    public void startFourthFragment() {
+//        fragmentTransaction = getFragmentManager().beginTransaction();
+//        fragmentTransaction.add(R.id.container, fourthFragment);
+//        fragmentTransaction.commit();
+//
+//    }
 
     @Override
     public void onBackPressed() {

@@ -36,7 +36,9 @@ public class FirstFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).startSecondFragment();
+//                ((MainActivity) getActivity()).startSecondFragment();
+                ((MainActivity) getActivity()).startFragment(((MainActivity) getActivity()).secondFragment);
+
             }
         });
 
