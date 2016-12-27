@@ -50,28 +50,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.fragment1) {
-//            startFirstFragment();
-            startFragment(firstFragment);
-
-        } else if (id == R.id.fragment2) {
-//            startSecondFragment();
-            startFragment(secondFragment);
-
-        } else if (id == R.id.fragment3) {
-//            startThirdFragment();
-            startFragment(thirdFragment);
-
-        } else if (id == R.id.fragment4) {
-//            startFourthFragment();
-            startFragment(fourthFragment);
+        switch (id) {
+            case (R.id.fragment1):
+                startFragment(firstFragment);
+                break;
+            case (R.id.fragment2):
+                startFragment(secondFragment);
+                break;
+            case (R.id.fragment3):
+                startFragment(thirdFragment);
+                break;
+            case (R.id.fragment4):
+                startFragment(fourthFragment);
+                break;
+            default:
+                break;
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-
     }
 
     public void onFragmentButtonSelected(View v) {
@@ -79,18 +76,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id) {
             case (R.id.first_button):
                 startFragment(secondFragment);
-//                startSecondFragment();
                 break;
             case (R.id.second_button):
                 startFragment(thirdFragment);
-//                startThirdFragment();
                 break;
             case (R.id.third_button):
                 startFragment(fourthFragment);
-//                startFourthFragment();
                 break;
             case (R.id.fourth_button):
-//                startFirstFragment();
                 startFragment(firstFragment);
                 break;
             default:
@@ -100,46 +93,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void startFragment(Fragment fragment) {
         fragmentTransaction = getFragmentManager().beginTransaction();
-//        getFragmentManager().getBackStackEntryAt(0);
-//        if(getBackStackEntryCount()>0)
-//            getBackStackEntryAt( getBackStackEntryCount() -1)
-//        getFragmentManager().findFragmentById(0);
-//        getFragmentManager().
-//        if (fragmentTransaction.isEmpty()) {
-//            fragmentTransaction.add(R.id.container, fragment);
-//        }
         fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
-//    public void startFirstFragment() {
-//        fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.container, firstFragment);
-//        fragmentTransaction.commit();
-//
-//    }
-//
-//    public void startSecondFragment() {
-//        fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.container, secondFragment);
-//        fragmentTransaction.commit();
-//
-//    }
-//
-//    public void startThirdFragment() {
-//        fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.container, thirdFragment);
-//        fragmentTransaction.commit();
-//
-//    }
-//
-//    public void startFourthFragment() {
-//        fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.container, fourthFragment);
-//        fragmentTransaction.commit();
-//
-//    }
 
     @Override
     public void onBackPressed() {
