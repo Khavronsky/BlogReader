@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             adb.setTitle("RED BO-O-OM BUTTON");
 
-            adb.setMessage("Oh, no!!!\n You pressed fucking red button!!!");
+            adb.setMessage("Oh, no!!!\n You pressed this fucking red button!!!");
 
             adb.setIcon(android.R.drawable.ic_dialog_info);
 
