@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            fragmentTransaction.add(R.id.container, fragment);
 //        }
         fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
