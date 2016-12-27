@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
