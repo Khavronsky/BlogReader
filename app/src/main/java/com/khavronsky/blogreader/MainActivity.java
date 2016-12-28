@@ -22,33 +22,38 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    DrawerLayout drawer;
     FragmentTransaction fragmentTransaction;
     Fragment firstFragment;
     Fragment secondFragment;
     Fragment thirdFragment;
     Fragment fourthFragment;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        init();
         setSupportActionBar(toolbar);
-        firstFragment = new FirstFragment();
-        secondFragment = new SecondFragment();
-        thirdFragment = new ThirdFragment();
-        fourthFragment = new FourthFragment();
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        firstFragment = new FirstFragment();
+        secondFragment = new SecondFragment();
+        thirdFragment = new ThirdFragment();
+        fourthFragment = new FourthFragment();
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -119,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     protected Dialog onCreateDialog(int id) {
             AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
@@ -126,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             adb.setMessage("Oh, no!!!\n You pressed this fucking red button!!!");
 
-            adb.setIcon(android.R.drawable.ic_dialog_info);
+            adb.setIcon(R.mipmap.scare);
 
             adb.setPositiveButton("Everybody must die", new DialogInterface.OnClickListener() {
                 @Override
@@ -147,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return adb.create();
 
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

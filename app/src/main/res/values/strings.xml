@@ -14,4 +14,5 @@
     <string name="don_t_push_red_button">DON\'T PUSH RED BUTTON</string>
     <string name="pusher">Жмякер</string>
     <string name="push">ЖМЯК-ЖМЯК</string>
+    <string name="settings_too">settings too</string>
 </resources>
