@@ -19,7 +19,7 @@ public class SecondFragment extends Fragment {
 
     public SecondFragment() {
     }
-    public static SecondFragment newInstance(String param1, String param2) {
+    public static SecondFragment newInstance() {
         SecondFragment fragment = new SecondFragment();
         Bundle bundleArgs = new Bundle();
         fragment.setArguments(bundleArgs);
@@ -36,6 +36,7 @@ public class SecondFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_second, container, false);
         textView = (TextView) view.findViewById(R.id.tvFragment2);
+        textView.setText("TEST");
         imageButton = (ImageButton) view.findViewById(R.id.second_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

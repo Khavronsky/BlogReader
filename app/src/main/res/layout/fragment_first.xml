@@ -4,26 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Presentation.WPPosts.FirstFragment">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
-    <ImageButton
-        android:id="@+id/first_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:onClick="onFragmentButtonSelected"
-        app:srcCompat="@drawable/ic_filter_2_black_24dp" />
-    <TextView
-        android:id="@+id/tvFragment1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/common_google_signin_btn_text_dark"
-        android:text="@string/Fragment_1"
-        android:textSize="32sp" />
 
 </FrameLayout>

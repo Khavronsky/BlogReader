@@ -6,8 +6,8 @@ import android.os.Handler;
 import java.util.List;
 
 public class PostPresenter {
-    IView view;
-    Handler handler = new Handler();
+    private IView view;
+    private Handler handler = new Handler();
 
     public PostPresenter(IView view) {
         this.view = view;

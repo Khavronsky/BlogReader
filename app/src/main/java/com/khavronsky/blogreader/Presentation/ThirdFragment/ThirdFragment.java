@@ -2,6 +2,7 @@ package com.khavronsky.blogreader.Presentation.ThirdFragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class ThirdFragment extends Fragment {
     }
 
     public static ThirdFragment newInstance() {
+        Log.d("AAA", "newInstance: start");
         ThirdFragment fragment = new ThirdFragment();
         Bundle bundleArgs = new Bundle();
         fragment.setArguments(bundleArgs);

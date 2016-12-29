@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class FirstFragment extends Fragment implements IView {
     }
 
     public static FirstFragment newInstance() {
+        Log.d(TAG, "newInstance: start");
         FirstFragment fragment = new FirstFragment();
         Bundle bundleArgs = new Bundle();
         fragment.setArguments(bundleArgs);
@@ -40,6 +42,7 @@ public class FirstFragment extends Fragment implements IView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -48,14 +51,21 @@ public class FirstFragment extends Fragment implements IView {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         myAdapter = new MyAdapter();
-        recyclerView.setAdapter(myAdapter);
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+
         recyclerView.setLayoutManager(mLayoutManager);
+        PostPresenter presenter = new PostPresenter(this);
+        presenter.loadData();
+        recyclerView.setAdapter(myAdapter);
+        myAdapter.notifyDataSetChanged();
+
         return view;
     }
 
     @Override
     public void showData(List<Model> list) {
+        myAdapter.setPosts(list);
+
 
     }
 }
