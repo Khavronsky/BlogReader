@@ -1,4 +1,4 @@
-package com.khavronsky.blogreader;
+package com.khavronsky.blogreader.Presentation.WPPosts;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.khavronsky.blogreader.Presentation.MainActivity;
+import com.khavronsky.blogreader.Presentation.SecondFragment.SecondFragment;
+import com.khavronsky.blogreader.R;
 
 
 public class FirstFragment extends Fragment {
@@ -42,8 +46,7 @@ public class FirstFragment extends Fragment {
             public void onClick(View v) {
                 MainActivity mainActivity=(MainActivity)getActivity();
                 mainActivity.setDrawerIndicatorEnabled(false);
-
-                ((MainActivity) getActivity()).startFragment(((MainActivity) getActivity()).secondFragment);
+                mainActivity.startFragment(SecondFragment.class);
 
             }
         });

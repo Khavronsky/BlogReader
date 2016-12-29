@@ -1,4 +1,4 @@
-package com.khavronsky.blogreader;
+package com.khavronsky.blogreader.Presentation.ThirdFragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.khavronsky.blogreader.Presentation.FourthFragment.FourthFragment;
+import com.khavronsky.blogreader.Presentation.MainActivity;
+import com.khavronsky.blogreader.R;
+
 
 public class ThirdFragment extends Fragment {
     TextView textView;
@@ -16,7 +20,7 @@ public class ThirdFragment extends Fragment {
     public ThirdFragment() {
     }
 
-    public static ThirdFragment newInstance(String param1, String param2) {
+    public static ThirdFragment newInstance() {
         ThirdFragment fragment = new ThirdFragment();
         Bundle bundleArgs = new Bundle();
         fragment.setArguments(bundleArgs);
@@ -37,8 +41,9 @@ public class ThirdFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ((MainActivity) getActivity()).startFragment(((MainActivity) getActivity()).fourthFragment);
+                MainActivity mainActivity=(MainActivity)getActivity();
+                mainActivity.setDrawerIndicatorEnabled(false);
+                mainActivity.startFragment(FourthFragment.class);
             }
         });
         return view;

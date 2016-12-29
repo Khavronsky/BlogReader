@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.khavronsky.blogreader.MainActivity">
+    tools:context="com.khavronsky.blogreader.Presentation.MainActivity">
 
 
     <TextView
@@ -17,6 +17,14 @@
         android:textSize="32sp"
         android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true" />
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvHello">
+    </FrameLayout>
+
     <include
     layout="@layout/drawer_layout"
     android:layout_width="match_parent"
@@ -28,12 +36,4 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.NoActionBar"
         tools:showIn="@layout/activity_main" />
-
-
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tvHello">
-    </FrameLayout>
 </RelativeLayout>
