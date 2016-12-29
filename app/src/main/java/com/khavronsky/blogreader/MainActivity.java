@@ -39,15 +39,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-
     }
 
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        secondFragment = new SecondFragment();
-        thirdFragment = new ThirdFragment();
-        fourthFragment = new FourthFragment();
+
+
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle = new ActionBarDrawerToggle(
                 this,
                 drawer,
-                toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
 
@@ -78,18 +76,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startFragment(firstFragment);
                 break;
             case (R.id.fragment2):
+                secondFragment = new SecondFragment();
                 startFragment(secondFragment);
                 break;
             case (R.id.fragment3):
+                thirdFragment = new ThirdFragment();
                 startFragment(thirdFragment);
                 break;
             case (R.id.fragment4):
+                fourthFragment = new FourthFragment();
                 startFragment(fourthFragment);
-                break;
-            default:
-                break;
-            case R.id.home:
-                Log.d("xxx","home button pressed");
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -127,31 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("...", "OnClick work!");
-//                if (getFragmentManager().getBackStackEntryCount() > 0) {
-//                    Log.d(TAG, "ONCLICK onBackPressed: ");
-//                    onBackPressed();
-//                } else {
-////                    getSupportActionBar().setDisplayShowHomeEnabled(false);
-////                    Log.d(TAG, "setDrawerIndicatorEnabled: ");
-//                    toggle.setDrawerIndicatorEnabled(false);
-//                    toggle.setDrawerIndicatorEnabled(true);
-//                    drawer.addDrawerListener(toggle);
-//                    toggle.syncState();
-//                    navigationView.setNavigationItemSelectedListener(MainActivity.this);
-//
-////                    drawer.
-////                    toggle.syncState();
-////                    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-////                    drawer.openDrawer(GravityCompat.START, true);
-//
-//                }
-//
-//            }
-//        });
     }
 
     @Override
@@ -167,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "onCreateOptionsMenu: start");
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
