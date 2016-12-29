@@ -15,4 +15,14 @@
     <string name="pusher">Жмякер</string>
     <string name="push">ЖМЯК-ЖМЯК</string>
     <string name="settings_too">settings too</string>
+
+    <string name="info">Подробно</string>
+    <string name="connect">Connect</string>
+    <string name="test">Test</string>
+    <string name="id">ID</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="Image_Url">url</string>
+    <string name="image">image</string>
+    <string name="menu">menu</string>
 </resources>

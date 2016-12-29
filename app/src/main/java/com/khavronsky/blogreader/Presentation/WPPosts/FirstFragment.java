@@ -2,20 +2,29 @@ package com.khavronsky.blogreader.Presentation.WPPosts;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.khavronsky.blogreader.Presentation.MainActivity;
-import com.khavronsky.blogreader.Presentation.SecondFragment.SecondFragment;
 import com.khavronsky.blogreader.R;
 
+import java.util.List;
 
-public class FirstFragment extends Fragment {
+
+public class FirstFragment extends Fragment implements IView {
     TextView textView;
     ImageButton imageButton;
+    RecyclerView recyclerView;
+    MyAdapter myAdapter;
+    protected RecyclerView.LayoutManager mLayoutManager;
+
+
+
+
     private static final String TAG = "Fragment_1";
 
     public FirstFragment() {
@@ -37,19 +46,16 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_first, container, false);
-        textView = (TextView) view.findViewById(R.id.tvFragment1);
-        imageButton = (ImageButton) view.findViewById(R.id.first_button);
-
-
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mainActivity=(MainActivity)getActivity();
-                mainActivity.setDrawerIndicatorEnabled(false);
-                mainActivity.startFragment(SecondFragment.class);
-
-            }
-        });
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        myAdapter = new MyAdapter();
+        recyclerView.setAdapter(myAdapter);
+        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
         return view;
+    }
+
+    @Override
+    public void showData(List<Model> list) {
+
     }
 }
