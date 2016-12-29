@@ -39,36 +39,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+
+    }
+
+    private void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        secondFragment = new SecondFragment();
+        thirdFragment = new ThirdFragment();
+        fourthFragment = new FourthFragment();
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
         toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this,
+                drawer,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+
         toggle.syncState();
+        drawer.addDrawerListener(toggle);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    private void init() {
-        Log.d(TAG, "init: start");
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        firstFragment = new FirstFragment();
-        secondFragment = new SecondFragment();
-        thirdFragment = new ThirdFragment();
-        fourthFragment = new FourthFragment();
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.d(TAG, "onNavigationItemSelected: start");
+
         int id = item.getItemId();
         switch (id) {
             case (R.id.fragment1):
+                firstFragment = new FirstFragment();
                 startFragment(firstFragment);
                 break;
             case (R.id.fragment2):
@@ -82,11 +88,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             default:
                 break;
+            case R.id.home:
+                Log.d("xxx","home button pressed");
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        Log.d(TAG, "onNavigationItemSelected: DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);");
         drawer.closeDrawer(GravityCompat.START);
-        Log.d(TAG, "onNavigationItemSelected: drawer.closeDrawer(GravityCompat.START);");
         return true;
     }
 
@@ -120,8 +127,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();
-
-
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -151,27 +156,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        Log.d(TAG, "onBackPressed: start");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        Log.d(TAG, "onBackPressed: DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);");
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-            Log.d(TAG, "onBackPressed: drawer.closeDrawer(GravityCompat.START);");
-        } else if (getFragmentManager().getBackStackEntryCount() > 0) {
-//            Log.d(TAG, "onBackPressed: ");
+        } else /*if (getFragmentManager().getBackStackEntryCount() > 0) */{
             super.onBackPressed();
-        } else {
-
         }
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG, "onCreateOptionsMenu: start");
-
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -207,11 +202,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "onOptionsItemSelected: start");
-
         int id = item.getItemId();
 
         switch (id) {
+            case (android.R.id.home):
+                if (!toggle.onOptionsItemSelected(item)) onBackPressed();
+                Log.d(TAG, "onOptionsItemSelected: ЖМЯК");
+                break;
             case (R.id.red_button):
                 showDialog(0);
                 break;
@@ -227,10 +224,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case (R.id.settings_too):
 
                 break;
-            default:
-                break;
-        }
 
+        }
         return super.onOptionsItemSelected(item);
     }
 }

@@ -17,7 +17,7 @@ public class FirstFragment extends Fragment {
     public FirstFragment() {
     }
 
-    public static FirstFragment newInstance(String param1, String param2) {
+    public static FirstFragment newInstance() {
         FirstFragment fragment = new FirstFragment();
         Bundle bundleArgs = new Bundle();
         fragment.setArguments(bundleArgs);
