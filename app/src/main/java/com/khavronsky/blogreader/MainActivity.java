@@ -18,7 +18,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,20 +71,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         switch (id) {
             case (R.id.fragment1):
-                firstFragment = new FirstFragment();
-                startFragment(firstFragment);
+                startFragment(FirstFragment.class);
                 break;
             case (R.id.fragment2):
-                secondFragment = new SecondFragment();
-                startFragment(secondFragment);
+                startFragment(SecondFragment.class);
                 break;
             case (R.id.fragment3):
-                thirdFragment = new ThirdFragment();
-                startFragment(thirdFragment);
+                startFragment(ThirdFragment.class);
                 break;
             case (R.id.fragment4):
-                fourthFragment = new FourthFragment();
-                startFragment(fourthFragment);
+                startFragment(FourthFragment.class);
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -97,32 +92,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.toggle.setDrawerIndicatorEnabled(set);
     }
 
-    public void onFragmentButtonSelected(View v) {
-        int id = v.getId();
-        switch (id) {
-            case (R.id.first_button):
-                startFragment(secondFragment);
-                break;
-            case (R.id.second_button):
-                startFragment(thirdFragment);
-                break;
-            case (R.id.third_button):
-                startFragment(fourthFragment);
-                break;
-            case (R.id.fourth_button):
-                startFragment(firstFragment);
-                break;
-            default:
-                break;
+//    public void onFragmentButtonSelected(View v) {
+//        int id = v.getId();
+//        switch (id) {
+//            case (R.id.first_button):
+//                startFragment(secondFragment);
+//                break;
+//            case (R.id.second_button):
+//                startFragment(thirdFragment);
+//                break;
+//            case (R.id.third_button):
+//                startFragment(fourthFragment);
+//                break;
+//            case (R.id.fourth_button):
+//                startFragment(firstFragment);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+
+    public void startFragment(Class fragClass) {
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragClass.newInstance();
+
+            fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        } catch (Exception e){
+            e.printStackTrace();
+
         }
     }
 
-    public void startFragment(Fragment fragment) {
-        fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
-                .addToBackStack(null)
-                .commit();
+    public void clearBackStack(){
+        FragmentManager manager = getFragmentManager();
+        if (manager.getBackStackEntryCount() > 0) {
+            FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
+            manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
     }
 
     @Override
@@ -131,7 +142,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else /*if (getFragmentManager().getBackStackEntryCount() > 0) */{
+        } else if (getFragmentManager().getBackStackEntryCount() > 0) {
+            if (getFragmentManager().getBackStackEntryCount() == 1){
+                setDrawerIndicatorEnabled(true);
+            }
             super.onBackPressed();
         }
     }
