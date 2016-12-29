@@ -36,8 +36,9 @@ public class SecondFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ((MainActivity) getActivity()).startThirdFragment();
-                ((MainActivity) getActivity()).startFragment(((MainActivity) getActivity()).thirdFragment);
+                MainActivity mainActivity=(MainActivity)getActivity();
+                mainActivity.setDrawerIndicatorEnabled(false);
+                mainActivity.startFragment(ThirdFragment.class);
             }
         });
         return view;

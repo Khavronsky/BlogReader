@@ -37,10 +37,12 @@ public class ThirdFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ((MainActivity) getActivity()).startFragment(((MainActivity) getActivity()).fourthFragment);
+                MainActivity mainActivity=(MainActivity)getActivity();
+                mainActivity.setDrawerIndicatorEnabled(false);
+                mainActivity.startFragment(FourthFragment.class);
             }
         });
+
         return view;
     }
 
