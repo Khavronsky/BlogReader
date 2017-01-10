@@ -10,7 +10,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:onClick="onFragmentButtonSelected"
         app:srcCompat="@drawable/ic_filter_4_black_24dp" />
 
     <TextView
@@ -20,5 +19,10 @@
         android:text="@string/Fragment_3"
         android:textSize="32sp"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/super_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

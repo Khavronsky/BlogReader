@@ -1,7 +1,7 @@
 package com.khavronsky.blogreader.Presentation.WPPosts;
 
 
-class Model {
+public class Model {
     private int id;
     private String urlImg;
     private String content;

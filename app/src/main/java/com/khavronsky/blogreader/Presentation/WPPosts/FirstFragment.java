@@ -65,7 +65,10 @@ public class FirstFragment extends Fragment implements IView {
     @Override
     public void showData(List<Model> list) {
         myAdapter.setPosts(list);
+    }
 
+    @Override
+    public void showButtonText(String text) {
 
     }
 }
